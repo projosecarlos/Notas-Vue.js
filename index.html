@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Notas con Vue</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Mi CSS -->
+    <link rel="stylesheet" href="style2.css" type="text/css">
+
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!--Scripts para trabajar con Vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id='appNota'>
+
+        <div>
+            <h3>Inserta tu nota</h3>
+            <input v-model="nota">
+            <anadir v-model="nota" v-on:keyup.enter="anadir"></anadir>
+            <button v-on:click="anadir">Anadir nota</button>
+        </div>
+
+        <div>
+            <ol>
+                <li v-for="(element, index) in listaOrdenada">
+                    <p v-bind:class="{active: element.completado}">
+                        <input type="checkbox" name="done" value="done" v-model="element.completado"> {{ element.note }}
+                    </p>
+                </li>
+            </ol> 
+        </div>
+
+        <div>
+            <p>Tienes {{pendientes}} tareas pendientes</p>
+            <button v-on:click="borrar">Borrar notas completadas</button>  
+        </div>
+
+        <div>
+            <input>
+            <button>Buscar nota</button>
+        </div>
+
+        <!--<nota v-for="(nota, index) in notas" v-bind:texto="nota.texto" v-bind:prioridad="nota.prioridad"></nota>
+        <input v-on:click='' type="radio" name="done" value="done">-->
+        
+    </div>
+
+    <script src="main2.js"></script>
+</body>
+
+</html>
